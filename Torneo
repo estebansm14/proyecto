@@ -1,0 +1,109 @@
+/**
+ * Write a description of class Torneo here.
+ * 
+ * @author (Daniel Restrepo y Esteban Salazar) 
+ * @version (a version number or a date)
+ */
+public class Torneo
+{
+    // instance variables - replace the example below with your own
+    
+
+    public static void main(String[] args,String[] equipos,int []resultado,int []res2,int[] rest3)
+    {
+         BinaryTree <String> arbolito = new BinaryTree<String>();
+         int num = equipos.length;
+         Node raiz = new Node("Final");
+         arbolito.raiz = raiz;
+         raiz.izq = new Node ("Sem1");
+         raiz.der = new Node ("Sem2");
+         raiz.der.der = new Node ("Cuart1");
+         raiz.der.izq = new Node ("Cuart2");
+         raiz.izq.der = new Node ("Cuart3");
+         raiz.izq.izq = new Node ("Cuar4");
+         String ganador;
+         String ganador2;
+         String ganador3;
+         String ganador4;
+         String ganadorf;
+         String ganadorf2;
+         raiz.izq.izq.izq = new Node (equipos[7]+": "+ resultado[7]);
+         raiz.izq.izq.der = new Node (equipos[6]+": "+ resultado[6]);
+         raiz.izq.der.izq = new Node (equipos[5]+": "+ resultado[5]);
+         raiz.izq.der.der = new Node (equipos[4]+": "+ resultado[4]);
+         raiz.der.izq.izq = new Node (equipos[3]+": "+ resultado[3]);
+         raiz.der.izq.der = new Node (equipos[2]+": "+resultado[2]);
+         raiz.der.der.izq = new Node (equipos[1]+": "+ resultado[1]);
+         raiz.der.der.der = new Node (equipos[0]+": "+resultado[0]);
+         if (resultado[0] < resultado[1]){
+              raiz.der.der.data = "Won fase 1: "+equipos[1]+": "+res2[0];
+               ganador = equipos[1];
+             }
+             else{
+                 raiz.der.der.data = "Won fase 1: "+equipos[0]+": "+res2[0];
+                 ganador = equipos[0];
+         }
+         
+          if (resultado[2] < resultado[3]){
+              raiz.der.izq.data = "Won fase 1: "+equipos[3]+": "+res2[1];
+               ganador2 = equipos[3];
+            }
+             else{
+                raiz.der.izq.data = "Won fase 1: "+equipos[2]+": "+res2[1];
+                ganador2 = equipos[2];
+         }
+         
+         if (resultado[4] < resultado[5]){
+              raiz.izq.der.data = "Won fase 1: "+equipos[5]+": "+res2[2];
+              ganador3 = equipos[5];
+             }
+             else{
+                 raiz.izq.der.data = "Won fase 1: "+equipos[4]+": "+res2[2];
+                 ganador3 = equipos[4];
+         }
+
+         
+          if (resultado[6] < resultado[7]){
+              raiz.izq.izq.data = "Won fase 1: "+equipos[7]+": "+res2[3];
+              ganador4 = equipos[7];
+             }
+             else{
+                raiz.izq.izq.data = "Won fase 1: "+equipos[6]+": "+res2[3];
+                 ganador4 = equipos[6];
+         }
+         
+         
+           
+        
+
+       
+         if(res2[0] < res2[1]){
+             raiz.der.data = "         Won fase 2: "+ganador2+": " + rest3[0];
+              ganadorf = ganador2;
+            }
+            else{
+                raiz.der.data = "         Won fase 2: "+ganador+": " + rest3[0];
+                ganadorf = ganador;
+            }
+            
+         if(res2[2] < res2[3]){
+             raiz.izq.data ="         Won fase 2: "+ganador4+": " + rest3[1];
+             ganadorf2 = ganador4;
+            }
+            else{
+                raiz.izq.data = "         Won fase 2: "+ganador3+": " + rest3[1];
+                ganadorf2= ganador3;
+            }
+
+         if(rest3[0] < rest3[1]){
+            raiz.data = "Won Tournament: " + ganadorf2;
+        }
+        else{
+            raiz.data = "Won Tournament: " + ganadorf;
+        }
+
+          arbolito.imprimir(); 
+          
+          
+        }
+}
