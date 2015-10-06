@@ -1,0 +1,84 @@
+public class BinaryTree<String> {
+    Node raiz;
+     public void imprimir(){ //recive el "llamado" del main y llama a imprimir Aux
+    imprimirAux(raiz);
+    }
+   
+    private void imprimirAux(Node n){
+    if (n != null){ //mira si el nodo n tiene algun valor para imprimirlo y despues volverse a llamar pero con nodo diferente
+     System.out.println(n.data);
+     imprimirAux(n.izq);
+     imprimirAux(n.der);
+    }
+    }
+    
+    public boolean buscarAux(String e){ //recive el "llamado" del main y llama a buscarAux
+     return buscarAux(raiz,e);
+    }
+    
+    private boolean buscarAux(Node n, String e){
+        boolean res = false; //le asigna falso a una variable para despues mirar si el nodo tiene 
+        //dato para ver si el nodo es igual a la cadena e si no busca en el izq y der llamandose cada vez 
+        if (n != null){
+         return res = (n.data == e) || buscarAux(n.izq, e) || buscarAux(n.der,e);
+       
+        }
+        return res;
+    }
+    
+    public void imprimirNivelN(int n){ // recive el llamdo del main con un int n para llamar a imprimirNivelAUX
+    imprimirNivelNAux(raiz,0);
+    imprimirNivelNAux(raiz,1);
+    imprimirNivelNAux(raiz,2);
+    imprimirNivelNAux(raiz,3);
+    }
+
+    private void imprimirNivelNAux(Node n, int num){
+        if (n != null){ //imprime nivel por nivel el arbol
+        if (num == 0){
+            System.out.println(n.data + " ");
+        }else{
+            imprimirNivelNAux(n.der, num-1);
+            imprimirNivelNAux(n.izq, num-1);
+        }
+       }
+    }
+    
+    public BinaryTree(){
+        raiz = null;
+    }
+    
+    private int max2(int i, int j)
+    {
+        if (i > j) 
+            return i;
+        return j;
+    }
+    
+    private int maxheightAUX(Node node) //mira cual es la altura del arbol 
+    {
+        if (node == null)
+                return 0;
+        else 
+                return max2(maxheightAUX(node.izq), maxheightAUX(node.der))+1;
+    }
+    
+    public int maxheight() //recibe el llamado del main para llamr a maxHeightAUX
+    {
+       return maxheightAUX(raiz);
+    }
+
+    private void recursivePrintAUX(Node node) //imprime recursivamente el arbol
+    {
+        if (node != null)
+        {
+            recursivePrintAUX(node.izq);
+            recursivePrintAUX(node.der);
+            System.out.println(node.data);
+        }
+        
+        
+    }
+    
+ 
+}
